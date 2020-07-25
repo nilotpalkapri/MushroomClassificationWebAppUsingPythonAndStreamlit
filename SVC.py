@@ -17,7 +17,10 @@ def analyse(X_train, X_test, y_train, y_test, class_names, plot_metrics):
     kernel = st.sidebar.radio('Kernal', ('rbf', 'linear'), key='kernel')
     gamma = st.sidebar.radio('Gamma (Kernel Coefficient)', ('scale', 'auto'), key='gamma')
 
-    metrics = st.sidebar.multiselect('What metrics to plot?', ('Confusion Matrix', 'ROC Curve', 'Precision-Recall Curve'))
+    metrics = st.sidebar.multiselect('What metrics to plot?', 
+                                    ('Select All', 'Confusion Matrix', 'ROC Curve', 'Precision-Recall Curve'), default=['Select All'])
+    if 'Select All' in metrics:
+        metrics = ['Confusion Matrix', 'ROC Curve', 'Precision-Recall Curve']
             
     if st.sidebar.button('Classify', key='classify'):
         st.subheader('Support Vector Machine (SVM) Results')

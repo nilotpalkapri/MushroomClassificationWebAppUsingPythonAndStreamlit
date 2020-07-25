@@ -18,7 +18,12 @@ def analyse(X_train, X_test, y_train, y_test, class_names, plot_metrics):
     max_depth = st.sidebar.number_input('The maximum depth of the tree', 1, 20, step=1, key='max_depth')
     bootstrap = st.sidebar.radio('Bootstrap samples when building trees', ('True', 'False'), key='bootstrap')
 
-    metrics = st.sidebar.multiselect('What metrics to plot?', ('Confusion Matrix', 'ROC Curve', 'Precision-Recall Curve'))
+
+    metrics = st.sidebar.multiselect('What metrics to plot?', 
+                                    ('Select All', 'Confusion Matrix', 'ROC Curve', 'Precision-Recall Curve'), default=['Select All'])
+    if 'Select All' in metrics:
+        metrics = ['Confusion Matrix', 'ROC Curve', 'Precision-Recall Curve']
+            
             
     if st.sidebar.button('Classify', key='classify'):
         st.subheader('Random Forest Result')

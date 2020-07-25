@@ -16,7 +16,12 @@ def analyse(X_train, X_test, y_train, y_test, class_names, plot_metrics):
     c = st.sidebar.number_input('c (Regularization parameter)', 0.01, 10.0, step=0.01, key='c_LR')
     max_iter = st.sidebar.slider('Maximum Number of Iterations', 100, 500, key='max_iter')
 
-    metrics = st.sidebar.multiselect('What metrics to plot?', ('Confusion Matrix', 'ROC Curve', 'Precision-Recall Curve'))
+
+    metrics = st.sidebar.multiselect('What metrics to plot?', 
+                                    ('Select All', 'Confusion Matrix', 'ROC Curve', 'Precision-Recall Curve'), default=['Select All'])
+    if 'Select All' in metrics:
+        metrics = ['Confusion Matrix', 'ROC Curve', 'Precision-Recall Curve']
+            
 
     if st.sidebar.button('Classify', key='classify'):
         st.subheader('Logistic Regrassion Results')
