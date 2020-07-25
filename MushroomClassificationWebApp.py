@@ -92,7 +92,8 @@ def main():
         st.warning('Please Choose an Option.')
 
 
-    elif mode == 2:   
+    elif mode == 2:
+        st.markdown('Please Choose Parameters from Sidebar and Click Proceed.')   
         df = load_data()
         y = df.type
         X = df.drop(columns=['type'])
@@ -120,6 +121,7 @@ def main():
 
 
     elif mode == 1:
+        st.markdown('Please Choose Parameters from Sidebar and Click Proceed.')
         df = load_data()
         X_train, X_test, y_train, y_test = split(df)
         class_names = ['edible', 'poisonous']
